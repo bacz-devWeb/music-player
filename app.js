@@ -301,6 +301,27 @@ const app = {
             path: './assets/music/song35.mp3',
             image: './assets/image/image35.jpg', 
         },
+        {
+            id: 36,
+            name: 'The Hills x Where Have You Been',
+            singer: 'Thereon Remix',
+            path: './assets/music/song36.mp3',
+            image: './assets/image/image36.jpg', 
+        },
+        {
+            id: 37,
+            name: 'Mi Mi Mi X BBOOM BBOOM',
+            singer: 'Japan REMIX ',
+            path: './assets/music/song37.mp3',
+            image: './assets/image/image37.jpg', 
+        },
+        {
+            id: 38,
+            name: 'HEROES TONIGHT FT. FLY AWAY',
+            singer: 'TRÍ THỨC REMIX',
+            path: './assets/music/song38.mp3',
+            image: './assets/image/image38.jpg', 
+        },
     ],
     //Render ra danh sách bài hát
     render: function() {
