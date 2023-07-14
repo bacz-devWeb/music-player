@@ -189,7 +189,7 @@ const app = {
         {
             id: 19,
             name: '大天篷',
-            singer: '璐爷',
+            singer: '李袁杰',
             path: './assets/music/song19.mp3',
             image: './assets/image/image19.jpg', 
         },
