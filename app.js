@@ -327,45 +327,45 @@ const app = {
             image: './assets/image/image38.jpg', 
         },
     ],
+
+    getTimeMusic: function() {
+        this.songs.forEach(function(song) {
+          var music = new Audio(song.path);
+          music.addEventListener('loadedmetadata', function() {
+            song.duration = music.duration;
+            var timeMusic = document.getElementById("time-music-" + song.id);
+            timeMusic.innerHTML = app.formatTime(song.duration);
+          });
+        });
+      },
+    
+    // Phương thức formatTime()
+    formatTime: function(seconds) {
+        var minutes = Math.floor(seconds / 60);
+        var remainingSeconds = Math.floor(seconds % 60);
+        var formattedTime = (minutes < 10 ? '0' : '') + minutes + ':' + (remainingSeconds < 10 ? '0' : '') + remainingSeconds;
+        return formattedTime;
+    },
+
     //Render ra danh sách bài hát
     render: function() {
         const htmls = this.songs.map((song, index) => {
-            return `
-                <div class="song ${index === this.currentIndex ? 'active-song' : ''}" data-index="${index}">
-                        <div class="thumb">
-                            <img src="${song.image}" alt="">
-                        </div>
-                        <div class="body">
-                            <h3 class="title">${song.name}</h3>
-                            <p class="author">${song.singer}</p>
-                        </div>
-                        <div class="time-song" id="time-music-${song.id}">Time</div>
-                </div>
-            `
-        })
+          return `
+            <div class="song ${index === this.currentIndex ? 'active-song' : ''}" data-index="${index}">
+              <div class="thumb">
+                <img src="${song.image}" alt="">
+              </div>
+              <div class="body">
+                <h3 class="title">${song.name}</h3>
+                <p class="author">${song.singer}</p>
+              </div>
+              <div class="time-song" id="time-music-${song.id}">${app.formatTime(song.duration)}</div>
+            </div>
+          `;
+        });
         listsongs.innerHTML = htmls.join('');
-        this.getTimeMusic();
     },
-    //Lấy thời gian bài hát
-    getTimeMusic: function() {
-        this.songs.forEach(
-            function(song){
-                var timeMusic = document.getElementById("time-music-"+song.id);
-                var pathMusic = song.path;
-                
-                var music = new Audio(pathMusic);
-                music.addEventListener('loadedmetadata', function() {
-                    timeMusic.innerHTML = formatTime(music.duration);
-                });
-            }
-        )
-        function formatTime(seconds) {
-            var minutes = Math.floor(seconds / 60);
-            var remainingSeconds = Math.floor(seconds % 60);
-            var formattedTime = (minutes < 10 ? '0' : '') + minutes + ':' + (remainingSeconds < 10 ? '0' : '') + remainingSeconds;
-            return formattedTime;
-        }
-    },
+    
 
     defineProperties: function() {
         Object.defineProperty(this, 'currentSong', {
@@ -543,6 +543,7 @@ const app = {
         this.loadCurrentSong()
     },
     start: function() {
+        this.getTimeMusic();
         //Render ra danh sách bài hát
         this.render();
 
