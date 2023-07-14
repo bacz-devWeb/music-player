@@ -310,15 +310,15 @@ const app = {
         },
         {
             id: 37,
-            name: 'Mi Mi Mi X BBOOM BBOOM',
+            name: 'Mi Mi Mi X Bboom Bboom',
             singer: 'Japan REMIX ',
             path: './assets/music/song37.mp3',
             image: './assets/image/image37.jpg', 
         },
         {
             id: 38,
-            name: 'HEROES TONIGHT FT. FLY AWAY',
-            singer: 'TRÍ THỨC REMIX',
+            name: 'Heroes Tonight FT. Fly Away',
+            singer: 'Trí Thức REMIX',
             path: './assets/music/song38.mp3',
             image: './assets/image/image38.jpg', 
         },
