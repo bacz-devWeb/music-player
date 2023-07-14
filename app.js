@@ -344,6 +344,7 @@ const app = {
             `
         })
         listsongs.innerHTML = htmls.join('');
+        this.getTimeMusic();
     },
     //Lấy thời gian bài hát
     getTimeMusic: function() {
@@ -542,6 +543,9 @@ const app = {
         this.loadCurrentSong()
     },
     start: function() {
+        //Render ra danh sách bài hát
+        this.render();
+
         //Định nghĩa các thuộc tính cho object
         this.defineProperties();
 
@@ -551,9 +555,8 @@ const app = {
         //Tải thông tin bài hát đầu tiên vào UI khi chạy ứng dụng
         this.loadCurrentSong();
 
-        //Render ra danh sách bài hát
-        this.render();
-        this.getTimeMusic();
+        
+        
     }
 }
 
