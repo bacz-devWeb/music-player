@@ -47,12 +47,16 @@ const repeatBtn = $('.btn-repeat');
 const listsongs = $('.listsongs')
 const timeStart = $('#timeFirst')
 const timeEnd = $('#timeLast')
+const btnVolum = $('.fa-volum')
+const volumProgress = $('.volum-progress')
+
 
 const app = {
     currentIndex: 0,
     isPlaying: false,
     isRandom: false,
     isRepeat: false,
+    isVolume: false,
     songs: [
         {
             id: 1,
@@ -468,6 +472,29 @@ const app = {
                 audio.play()
             }
         }
+
+        // tăng giảm âm lượng
+        volumProgress.onchange = function(e) {
+            const audioVol =  e.target.value
+            audio.volume = audioVol / 100
+           
+
+          }
+          // bật tắt volum 
+          btnVolum.onclick = function() {
+              // app.isVolum = !app.isVolum
+              // this.classList.toggle('fa-volume-xmark', app.isVolum)
+              if (app.isVolume) {
+                  this.classList.remove('fa-volume-xmark')
+                  app.isVolume = false
+                  audio.volume = 1;
+            } else {
+                  this.classList.add('fa-volume-xmark')
+                  app.isVolume = true
+                  audio.volume = 0;
+                  audioVol = 0;
+            }
+          }
     },
 
     //Xử lí time start / time end
